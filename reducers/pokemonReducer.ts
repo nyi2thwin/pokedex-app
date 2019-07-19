@@ -10,7 +10,7 @@ const pokemonReducer = (state = initialState, action) => {
     case ADD_POKEMON:
       let newState = {
         ...state,
-        pokemons: state.pokemons.concat(action.payload),
+        pokemons: [action.payload, ...state.pokemons],
       };
       return newState;
     default:
