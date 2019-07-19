@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, TextInput, Button, FlatList} from 'react-native';
 import {connect} from 'react-redux';
-import {Dispatch} from 'redux';
+import {ThunkDispatch} from 'redux-thunk';
+import {Action} from 'redux';
 
 import ListItem from './ListItem';
-import {addPokemon} from '../actions/pokemon';
+import {thunkSearchPokemon} from '../actions/pokemon';
 import {IPokemon} from '../interfaces';
 import {AppState} from '../store';
-import {searchPokemon} from '../api';
 
 interface PropsPokemons {
   pokemons: IPokemon[];
@@ -108,10 +108,12 @@ const mapStateToProps = (state: AppState): PropsPokemons => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch): PropsAdd => {
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<State, void, Action>,
+): PropsAdd => {
   return {
     add: (name: string): void => {
-      searchPokemon(name).then(pokemon => dispatch(addPokemon(pokemon)));
+      dispatch(thunkSearchPokemon(name));
     },
   };
 };
