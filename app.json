@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Pokedex",
+    "slug": "pokedex",
+    "version": "1.0",
+    "sdkVersion": "33.0.0",
+    "privacy": "public",
+    "ios": {
+      "bundleIdentifier": "playground.pokedex.coinmm"
+    },
+    "android": {
+      "package": "playground.pokedex.coinmm"
+    }
+  }
+}
